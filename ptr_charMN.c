@@ -11,7 +11,7 @@ int main(){
         printf("\n kptr[%d]=%s ", i, kptr[i] );
         //kptr++; 
     } // for ( i=0; i<3; i++ 
-
+    return 1; 
 }
 
 //RESULT :
