@@ -17,17 +17,36 @@ int main(){
 // kptr[2]=C 
     
     
-// WORKS WITHOUT MEMORY ALLOCATION, because points to the same memory
-
- char *keys1[3] = { "AAAAA", "BBBBBBBBB", "CCCCCCCC" }; 
- void *vkeys1 = &keys1; 
- char **kptr1 = vkeys1; 
- for ( i=0; i<3; i++ ) { printf("\n kptr1[%d]=%s ", i, kptr1[i] );  } 
+    // WORKS WITHOUT MEMORY ALLOCATION, because points to the same memory
+     char *keys1[3] = { "AAAAA", "BBBBBBBBB", "CCCCCCCC" }; 
+     void *vkeys1 = &keys1; 
+     char **kptr1 = vkeys1; 
+     for ( i=0; i<3; i++ ) { printf("\n kptr1[%d]=%s ", i, kptr1[i] );  } 
     
 //RESULTS: 
  // kptr1[0]=AAAAA 
  // kptr1[1]=BBBBBBBBB 
  // kptr1[2]=CCCCCCCC
+    
+    
+     //voiding coverts to D1 array of strings 
+    char *keys2[2][3] = {  {"AAA", "BBB", "CCC" }, { "DD", "EE", "FF" }  }; 
+    void *vkeys2 = &keys2;
+    char **kptr2 = vkeys2;
+    u=0;
+    for ( i=0; i<6; i++ ) {
+            j=i%3; 
+        printf("\n kptr2=[%d][%d]=%s ", u, j, (char*)kptr2[i] ); u++;
+                //kptr++; 
+    } // for ( i=0; i<3; i++ 
+ //RESULT : 
+ // kptr2=[0][0]=AAA 
+ // kptr2=[1][1]=BBB 
+ // kptr2=[2][2]=CCC 
+ // kptr2=[3][0]=DD 
+ // kptr2=[4][1]=EE 
+ // kptr2=[5][2]=FF
+    
     
    //voiding coverts to D1 array of strings 
     char *keys3[2][2][3] = {
