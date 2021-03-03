@@ -111,14 +111,14 @@ int main(){
 //kptrA[2]=CCCCCCCC
      
      
-     //TO ALLOCATE MEMORY INSIDE A FUNCTION, ONE HAS TO CREATE MINIMUM D2 ARRAY, AND ALLOCARE D1 OUTSIDE FUNCTION
+     //TO ALLOCATE MEMORY INSIDE A inner FUNCTION, ONE HAS TO DEFINE MINIMUM D2 ARRAY in OUTER, AND ALLOCARE D1 IN OUTER(MAIN)
     char *str[1]= {"labutis"};
     char **str2=NULL; 
     str2=calloc( 1, sizeof(char*) ); 
-    //*str2=calloc(  strlen(str[0]), sizeof(char*));
-    //void *vpstr=NULL;// segmentation fault if assignin inside calV function
-    void *vpstr=&str2; 
-    calV( vpstr, str, str2);
+    //*str2=calloc(  strlen(str[0]), sizeof(char*));//POSSIBLE INSIDE INNER
+    //void *vpstr=NULL;// segmentation fault if assignin inside INNTER function
+    void *vpstr=&str2; // segmentation fault if assignin inside INNTER function
+    calV( vpstr, str, str2); //COPIES STR TO STR2, VPSTR POINTS TO STR2 AND PRINTS VALUE TOO
     printf("\n '''''''''''MAIN "); 
     printf("\n str2=%s from main", *str2 ); 
     printf("\n vpstr=%s from main", **(char***)vpstr ); 
