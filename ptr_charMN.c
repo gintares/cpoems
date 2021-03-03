@@ -9,6 +9,16 @@ void cArr(void *vkeys, char *keys[]) {
     vkeys=&keys; 
 }
 
+void inner( void *vstr, char *str[], char **str2) {
+    //str2=calloc( 1, sizeof(char*) ); //works inside inner, but, does not work in main
+    *str2=calloc(  strlen(str[0]), sizeof(char*));
+   strcpy( *str2, str[0]) ;
+   //vstr=&str2; //works inside inner, but does not work inside main
+   printf("\n str2=%s from inner", *str2 ); 
+    //printf("\n vstr=%s ", *(char**)vstr ); // vstr=&(*str2); in main or inner
+    //printf("\n vstr=%s ", **(char***)vstr ); // vstr=&str2; in main or inner
+}
+
 int main(){
 
     char *keys[3] = { "A", "B", "C" }; 
@@ -96,9 +106,27 @@ int main(){
         //kptr++; 
     } // for ( i=0; i<3; i++ 
 // RESULT:
- kptrA[0]=AAAAA 
- kptrA[1]=BBBBBBBBB 
- kptrA[2]=CCCCCCCC
+//kptrA[0]=AAAAA 
+//kptrA[1]=BBBBBBBBB 
+//kptrA[2]=CCCCCCCC
+     
+     
+     //TO ALLOCATE MEMORY INSIDE A FUNCTION, ONE HAS TO CREATE MINIMUM D2 ARRAY, AND ALLOCARE D1 OUTSIDE FUNCTION
+    char *str[1]= {"labutis"};
+    char **str2=NULL; 
+    str2=calloc( 1, sizeof(char*) ); 
+    //*str2=calloc(  strlen(str[0]), sizeof(char*));
+    //void *vpstr=NULL;// segmentation fault if assignin inside calV function
+    void *vpstr=&str2; 
+    calV( vpstr, str, str2);
+    printf("\n '''''''''''MAIN "); 
+    printf("\n str2=%s from main", *str2 ); 
+    printf("\n vpstr=%s from main", **(char***)vpstr ); 
+//RESULT:
+//str2=labutis from inner
+//'''''''''''MAIN 
+//str2=labutis from main
+//vpstr=labutis from main
     
     return 1
     
