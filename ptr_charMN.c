@@ -33,10 +33,10 @@ int main(){
     char *keys2[2][3] = {  {"AAA", "BBB", "CCC" }, { "DD", "EE", "FF" }  }; 
     void *vkeys2 = &keys2;
     char **kptr2 = vkeys2;
-    u=0;
+    u=-1;
     for ( i=0; i<6; i++ ) {
-            j=i%3; 
-        printf("\n kptr2=[%d][%d]=%s ", u, j, (char*)kptr2[i] ); if(j==0) { u++; }
+        j=i%3;  if(j==0) { u++; }
+        printf("\n kptr2=[%d][%d]=%s ", u, j, (char*)kptr2[i] ); 
                 //kptr++; 
     } // for ( i=0; i<3; i++ 
  //RESULT : 
