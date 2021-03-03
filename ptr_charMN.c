@@ -1,6 +1,14 @@
 #include <stdio.h>              /* I/O lib         C89   */
 
 
+void cStr(void *vstr, char *str ) {
+    vstr=&str;
+}
+
+void cArr(void *vkeys, char *keys[]) {
+    vkeys=&keys; 
+}
+
 int main(){
 
     char *keys[3] = { "A", "B", "C" }; 
@@ -64,6 +72,36 @@ int main(){
     // printf &kpt[u][i][j] - does not work, j type is not recognised 
     
     return 1; 
+    
+    //DOES NOT WORK WITH STRINGS
+    char *str="labutis";
+    void *vstr=NULL; 
+    cStr(vstr,str);
+    char *str2= (char*)vstr;
+    printf("\n vstr=%s ", (char*)vstr ); // vstr=null
+    printf("\n str2=%s ", str2 ); //str2=null
+// RESULT:
+// vstr=null
+// str2=null
+
+
+    //WORKS WITH STRING ARRAYS
+    //int i;
+    //char *keys[3] = { "AAAAA", "BBBBBBBBB", "CCCCCCCC" }; //above
+    //void *vkeys = &keys; //above
+    cArr(vkeys, keys) ; 
+    char **kptrA = vkeys;
+    for ( i=0; i<3; i++ ) {
+        printf("\n kptrA[%d]=%s ", i, kptrA[i] );
+        //kptr++; 
+    } // for ( i=0; i<3; i++ 
+// RESULT:
+ kptrA[0]=AAAAA 
+ kptrA[1]=BBBBBBBBB 
+ kptrA[2]=CCCCCCCC
+    
+    return 1
+    
 }
 
 
