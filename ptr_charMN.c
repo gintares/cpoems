@@ -36,7 +36,7 @@ int main(){
     u=0;
     for ( i=0; i<6; i++ ) {
             j=i%3; 
-        printf("\n kptr2=[%d][%d]=%s ", u, j, (char*)kptr2[i] ); u++;
+        printf("\n kptr2=[%d][%d]=%s ", u, j, (char*)kptr2[i] ); if(j==0) { u++; }
                 //kptr++; 
     } // for ( i=0; i<3; i++ 
  //RESULT : 
