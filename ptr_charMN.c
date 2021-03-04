@@ -118,7 +118,8 @@ int main(){
     //*str2=calloc(  strlen(str[0]), sizeof(char*));//POSSIBLE INSIDE INNER
     //void *vpstr=NULL;// segmentation fault if assignin inside INNTER function
     void *vpstr=&str2; // segmentation fault if assignin inside INNTER function
-    calV( vpstr, str, str2); //COPIES STR TO STR2, VPSTR POINTS TO STR2 AND PRINTS VALUE TOO
+//NOT POSSIBE to extract function scope to void pointer - because if can to be D2 array, but *void is alwasy D1
+    inner( vpstr, str, str2); //COPIES STR TO STR2, VPSTR POINTS TO STR2 AND PRINTS VALUE TOO
     printf("\n '''''''''''MAIN "); 
     printf("\n str2=%s from main", *str2 ); 
     printf("\n vpstr=%s from main", **(char***)vpstr ); 
