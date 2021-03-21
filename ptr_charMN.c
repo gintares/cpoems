@@ -22,13 +22,18 @@ void inner( void *vstr, char *str[], char **str2) {
 int main(){
     
     char *arr[2] = { "d1", "d2" }; 
-    void *vp = &arr; 
-    printf("\n vp=%p, arr=%p ", ((char*)vp), arr );  //  vp=0x7ffce22464a0, arr=0x7ffce22464a0 
-    printf("\n vp[%d]=%p, arr[0]=%p", 0,  ((char***)vp) [0], arr[0] ); //  vp[0]=0x564b62820058, arr[0]=0x564b62820058
-    printf("\n vp[%d]=%s, arr[0]=%s", 0, (  (char*) ((char***)vp) [0]), arr[0] ); //  vp[0]=d1, arr[0]=d1
-    printf("\n vp[%d][%d]=%c, arr[0][0]=%c", 0, 0, (  (char*) ((char***)vp) [0])[0], arr[0][0] ); // vp[0][0]=d, arr[0][0]=d
     
- 
+    void *vpp = &arr; 
+    printf("\n vpp=%p, arr=%p ", ((char*)vpp), arr );  //  vp=0x7ffce22464a0, arr=0x7ffce22464a0 
+    printf("\n vpp[%d]=%p, arr[0]=%p", 0,  ((char***)vpp) [0], arr[0] ); // vp[0]=0x564b62820058, arr[0]=0x564b62820058
+    printf("\n vpp[%d]=%s, arr[0]=%s", 0, (  (char*) ((char***)vpp) [0]), arr[0] ); // vp[0]=d1, arr[0]=d1
+    printf("\n vpp[%d]=%c, arr[0]=%c", 0,  (  (char*) ((char***)vpp) [0])[0], arr[0][0] ); // vp[0][0]=d, arr[0][0]=d
+
+    void *vp = arr; 
+    printf("\n vp=%p, arr=%p ", ((char*)vp), arr ); //  vp=0x7ffce22464a0, arr=0x7ffce22464a0 
+    printf("\n vp[%d]=%p, arr[0]=%p", 0,  ((char**)vp) [0], arr[0] ); // vp[0]=0x564b62820058, arr[0]=0x564b62820058
+    printf("\n vp[%d]=%s, arr[0]=%s", 0, (  (char*) ((char**)vp) [0]), arr[0] ); // vp[0]=d1, arr[0]=d1
+    printf("\n vp[%d]=%c, arr[0]=%c", 0,  (  (char*) ((char**)vp) [0])[0], arr[0][0] ); // vp[0][0]=d, arr[0][0]=d
 
 
     char *keys[3] = { "A", "B", "C" }; 
