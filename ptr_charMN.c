@@ -26,6 +26,7 @@ int main(){
     printf("\n vp=%p, arr=%p ", ((char*)vp), arr );  //  vp=0x7ffce22464a0, arr=0x7ffce22464a0 
     printf("\n vp[%d]=%p, arr[0]=%p", 0,  ((char***)vp) [0], arr[0] ); //  vp[0]=0x564b62820058, arr[0]=0x564b62820058
     printf("\n vp[%d]=%s, arr[0]=%s", 0, (  (char*) ((char***)vp) [0]), arr[0] ); //  vp[0]=d1, arr[0]=d1
+    printf("\n vp[%d][%d]=%c, arr[0][0]=%c", 0, 0, (  (char*) ((char***)vp) [0])[0], arr[0][0] ); // vp[0][0]=d1, arr[0][0]=d1
     
  
 
